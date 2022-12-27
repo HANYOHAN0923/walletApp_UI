@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:wallet_app_ui/widgets/button.dart';
+import 'package:wallet_app_ui/widgets/currecy_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -8,113 +10,137 @@ class HomeScreen extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: const Color(0xFF181818), // Color.fromARFB()
-        body: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 35,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              const SizedBox(
-                height: 80,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: <Widget>[
-                      const Text(
-                        'Hey, Selena',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 28,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      Text(
-                        'Welcome back',
-                        style: TextStyle(
-                          color: Colors.white.withOpacity(0.7),
-                          fontSize: 18,
-                        ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(right: 10),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 120,
-              ),
-              Text(
-                'Total Balance',
-                style: TextStyle(
-                  fontSize: 22,
-                  color: Colors.white.withOpacity(0.8),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                const SizedBox(
+                  height: 80,
                 ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              const Text(
-                '\$5,194,482',
-                style: TextStyle(
-                  fontSize: 44,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white,
-                ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Row(
-                children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.amber,
-                      borderRadius: BorderRadius.circular(45),
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 20,
-                        horizontal: 50,
-                      ),
-                      child: Text(
-                        'Transfer',
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                  ),
-                  TextButton(
-                    style: ButtonStyle(
-                        padding: MaterialStateProperty.all<EdgeInsets>(
-                          EdgeInsets.symmetric(
-                            vertical: 20,
-                            horizontal: 60,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: <Widget>[
+                        const Text(
+                          'Hey, Selena',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 28,
+                            fontWeight: FontWeight.w700,
                           ),
                         ),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(45.0),
-                        ))),
-                    onPressed: () {},
-                    child: const Text(
-                      'Total',
+                        Text(
+                          'Welcome back',
+                          style: TextStyle(
+                            color: Colors.white.withOpacity(0.7),
+                            fontSize: 18,
+                          ),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(right: 10),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 120,
+                ),
+                Text(
+                  'Total Balance',
+                  style: TextStyle(
+                    fontSize: 22,
+                    color: Colors.white.withOpacity(0.8),
+                  ),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                const Text(
+                  '\$5,194,482',
+                  style: TextStyle(
+                    fontSize: 44,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const <Widget>[
+                    BankButton(
+                      text: 'Transfer',
+                      backgroundColor: Color(0xFFF1B33B),
+                      textColor: Colors.black,
+                    ),
+                    BankButton(
+                      text: 'Request',
+                      backgroundColor: Color(0xFF1F2123),
+                      textColor: Colors.white,
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 100,
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    const Text(
+                      'Wallets',
                       style: TextStyle(
-                        fontSize: 20,
                         color: Colors.white,
+                        fontSize: 36,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
-                  ),
-                ],
-              )
-            ],
+                    Text(
+                      'View All',
+                      style: TextStyle(
+                        color: Colors.white.withOpacity(0.8),
+                        fontSize: 18,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const CurrencyCard(
+                  name: 'Euro',
+                  code: 'EUR',
+                  amount: '6 428',
+                  icon: Icons.euro_outlined,
+                  isInverted: true,
+                  offset: Offset(0, 0),
+                ),
+                const CurrencyCard(
+                  name: 'Bitcoin',
+                  code: 'BTC',
+                  amount: '9 785',
+                  icon: Icons.currency_bitcoin,
+                  isInverted: false,
+                  offset: Offset(0, -20),
+                ),
+                const CurrencyCard(
+                  name: 'Dollar',
+                  code: 'UTC',
+                  amount: '1 221',
+                  icon: Icons.attach_money_outlined,
+                  isInverted: true,
+                  offset: Offset(0, -40),
+                ),
+              ],
+            ),
           ),
         ),
       ),
