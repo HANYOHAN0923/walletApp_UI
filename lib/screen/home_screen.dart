@@ -22,8 +22,12 @@ class HomeScreen extends StatelessWidget {
                   height: 80,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
+                    IconButton(
+                      onPressed: () {},
+                      icon: Image.asset('images/menu.png'),
+                    ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
@@ -103,11 +107,14 @@ class HomeScreen extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    Text(
-                      'View All',
-                      style: TextStyle(
-                        color: Colors.white.withOpacity(0.8),
-                        fontSize: 18,
+                    InkWell(
+                      onTap: () {},
+                      child: Text(
+                        'View All',
+                        style: TextStyle(
+                          color: Colors.white.withOpacity(0.8),
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                   ],

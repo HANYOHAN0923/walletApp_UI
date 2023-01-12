@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wallet_app_ui/screen/transfer_screen.dart';
 
 class BankButton extends StatelessWidget {
   final String text;
@@ -14,21 +15,30 @@ class BankButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        borderRadius: BorderRadius.circular(45),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: 20,
-          horizontal: 50,
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const TransferScreen(),
+            ));
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: backgroundColor,
+          borderRadius: BorderRadius.circular(45),
         ),
-        child: Text(
-          text,
-          style: TextStyle(
-            fontSize: 20,
-            color: textColor,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 20,
+            horizontal: 50,
+          ),
+          child: Text(
+            text,
+            style: TextStyle(
+              fontSize: 20,
+              color: textColor,
+            ),
           ),
         ),
       ),
